@@ -30,6 +30,19 @@ class Setting
         }
     }
 
+    public function getUnits()
+ {
+        try {
+            $query = 'SELECT * FROM  tbl_units ';
+            $stmt = $this->conn->prepare( $query );
+            $stmt->execute();
+            return $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+        } catch ( PDOException $e ) {
+            return false;
+        }
+    }
+
     public function getLocation()
  {
         try {
@@ -124,6 +137,131 @@ class Setting
                 ':role_name' => $data[ 'role_name' ],
                 ':description'  => $data[ 'description' ],
                 ':role_id'   => $data[ 'role_id' ]
+            ] );
+        } catch ( PDOException $e ) {
+            return false;
+        }
+    }
+
+    public function existscompany( string $cpy_full_name, string  $phone, string $email ): ?string
+ {
+        $sql = "
+            SELECT 
+                CASE
+                    WHEN cpy_full_name = :cpy_full_name THEN 'Company Name'
+                    WHEN phone = :phone THEN 'phone'
+                    WHEN email = :email THEN 'email'
+
+                END AS field
+            FROM  tbl_company
+            WHERE cpy_full_name = :cpy_full_name or phone = :phone or email = :email
+            LIMIT 1
+        ";
+
+        $stmt = $this->conn->prepare( $sql );
+        $stmt->execute( [
+            ':cpy_full_name' => $cpy_full_name,
+            ':phone' => $phone,
+            ':email' => $email
+
+        ] );
+
+        $row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+        return $row[ 'field' ] ?? null;
+    }
+
+    public function createCompany( array $data ): bool
+ {
+        try {
+            $sql = "
+                INSERT INTO  tbl_company (
+                    cpy_full_name,
+                    cpy_short_name,
+                    phone,
+                    email,
+                    address
+
+                ) VALUES (
+                    :cpy_full_name,
+                    :cpy_short_name,
+                    :phone,
+                    :email,
+                    :address
+                )
+            ";
+
+            $stmt = $this->conn->prepare( $sql );
+
+            return $stmt->execute( [
+                ':cpy_full_name' => $data[ 'cpy_full_name' ],
+                ':cpy_short_name'  => $data[ 'cpy_short_name' ],
+                ':phone'  => $data[ 'phone' ],
+                ':email'  => $data[ 'email' ],
+                ':address'  => $data[ 'address' ]
+
+            ] );
+        } catch ( PDOException $e ) {
+            return false;
+        }
+    }
+
+    public function getCompany()
+ {
+        try {
+            $query = 'SELECT * FROM  tbl_company';
+            $stmt = $this->conn->prepare( $query );
+            $stmt->execute();
+            return $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+        } catch ( PDOException $e ) {
+            return false;
+        }
+    }
+
+    public function existsCompanyUpdate( string $cpy_full_name, string $phone, string $email, string $cpy_id ): ?string
+ {
+        $sql = "
+            SELECT 
+                CASE
+                    WHEN cpy_full_name = :cpy_full_name THEN 'Company Full Name'
+                    WHEN phone = :phone THEN 'Phone'
+                    WHEN email = :email THEN 'Email'
+                END AS field
+            FROM  tbl_company
+            WHERE (cpy_full_name = :cpy_full_name OR phone = :phone OR email = :email) and cpy_id!=:cpy_id
+            LIMIT 1
+        ";
+
+        $stmt = $this->conn->prepare( $sql );
+        $stmt->execute( [
+            ':cpy_full_name' => $cpy_full_name,
+            ':phone' => $phone,
+            ':email' => $email,
+            ':cpy_id'    => $cpy_id
+        ] );
+
+        $row = $stmt->fetch( PDO::FETCH_ASSOC );
+
+        return $row[ 'field' ] ?? null;
+    }
+
+    public function updateCompany( array $data ): bool {
+
+        try {
+            $sql = "UPDATE tbl_company SET cpy_full_name=:cpy_full_name,cpy_short_name=:cpy_short_name,
+            phone=:phone,email=:email,address=:address
+            where cpy_id =:cpy_id";
+
+            $stmt = $this->conn->prepare( $sql );
+
+            return $stmt->execute( [
+                ':cpy_full_name' => $data[ 'cpy_full_name' ],
+                ':cpy_short_name' => $data[ 'cpy_short_name' ],
+                ':phone' => $data[ 'phone' ],
+                ':email' => $data[ 'email' ],
+                ':address'  => $data[ 'address' ],
+                ':cpy_id'   => $data[ 'cpy_id' ]
             ] );
         } catch ( PDOException $e ) {
             return false;

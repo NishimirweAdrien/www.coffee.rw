@@ -88,6 +88,27 @@ switch ( true ) {
     $inventorycontroller = new InventoryController();
     $inventorycontroller->deleteSupplier( $matches[ 1 ] );
     break;
+
+    // company
+    case $route === '/settings/createcompany':
+    $settingcontroller = new SettingController();
+    $settingcontroller->CreateCompany();
+    break;
+
+    case $route === '/settings/getcompany':
+    $settingcontroller = new SettingController();
+    $settingcontroller->getCompanyInfo();
+    break;
+
+    case $route === '/settings/updatecompany':
+    $settingcontroller = new SettingController();
+    $settingcontroller->UpdateCompanyData();
+    break;
+    // Units
+    case $route === '/settings/units':
+    $settingcontroller = new SettingController();
+    $settingcontroller->getAllUnits();
+    break;
     default:
     Response::error( 'Endpoint not found', 404 );
     break;
