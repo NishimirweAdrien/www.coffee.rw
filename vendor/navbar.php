@@ -42,7 +42,7 @@
                     </li>
                     <li>
                         <a data-toggle="tab" href="#Settings">
-                            <i class="notika-icon notika-gear"></i> Settings
+                            <i class="notika-icon notika-settings"></i> Settings
                         </a>
                     </li>
                 </ul>
@@ -58,9 +58,8 @@
                     <!-- Users & Roles Content -->
                     <div id="UsersRoles" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                        <li><a href="javascript:void(0)" onclick="loadContent('manage-users')">Manage Users</a></li>
+                         <li><a href="javascript:void(0)" onclick="loadContent('manage-users')">Manage Users</a></li>
                          <li><a href="javascript:void(0)" onclick="loadContent('manage-roles')">Manage Roles</a></li>
-                         <li><a href="javascript:void(0)" onclick="loadContent('permissions')">Permissions</a></li>
                         </ul>
                     </div>
 
