@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php
 require __DIR__ . '/../_ikawa/config/App.php';
 require __DIR__ . '/../_ikawa/middleware/auth.php';
@@ -51,3 +52,33 @@ if ( isset( $allowed_pages[ $page ] ) ) {
     echo '<h3>Page not found</h3>';
 }
 >>>>>>> itec/felix
+=======
+<?php
+require __DIR__ . '/../_ikawa/config/App.php';
+require __DIR__ . '/../_ikawa/middleware/auth.php';
+
+$page = $_GET[ 'page' ] ?? 'dashboard';
+
+// whitelist of allowed pages
+$allowed_pages = [
+    'dashboard' => 'views/dashboard.php',
+    'manage-users' => 'views/manage-users.php',
+    'manage-roles' => 'views/manage-roles.php',
+    'permissions' => 'views/permissions-data.php',
+    'suppliers'=>'views/suppliers-data.php',
+    'profile'=>'views/profile-data.php',
+    'sellize-management'=>'views/sellize-management.php',
+    'coffee-categories'=>'views/coffee-categories.php',
+    'coffee-types'=>'views/coffee-types.php',
+    'coffee-types-assign-unity'=>'views/coffee-types-assign-unity.php',
+    'unity'=>'views/unity.php',
+];
+
+if ( isset( $allowed_pages[ $page ] ) ) {
+    require __DIR__ . '/' . $allowed_pages[ $page ];
+} else {
+    http_response_code( 404 );
+    echo '<h3>Page not found</h3>';
+}
+
+>>>>>>> itec/christian

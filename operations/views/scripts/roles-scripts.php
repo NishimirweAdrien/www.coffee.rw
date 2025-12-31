@@ -1,9 +1,13 @@
 
 <<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> itec/felix
+=======
+>>>>>>> itec/christian
 <script>
 $(document).ready(function () {
 
@@ -17,6 +21,25 @@ $(document).on('click', '#saveRoleBtn', function () {
         };
 
         if (!payload.role_name) {
+<<<<<<< HEAD
+========
+<script>
+$(document).ready(function () {
+  // Handle Save  button
+$(document).on('click', '#saveSupplierBtn', function () {
+    const btn = this;
+    setButtonLoading(btn, true);
+          const payload = {
+            full_name: $('#full_name').val().trim(),
+            email: $('#email').val().trim(),
+            phone: $('#phone').val().trim(),
+            address: $('#address').val().trim()
+        };
+
+        if (!payload.phone || !payload.full_name) {
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+>>>>>>> itec/christian
             showToast('Please fill all required fields!', 'error');
             setButtonLoading(btn, false);
             return;
@@ -24,7 +47,15 @@ $(document).on('click', '#saveRoleBtn', function () {
         }
 
         $.ajax({
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
             url: '<?= App::baseUrl() ?>/_ikawa/settings/createrole',
+========
+            url: '<?= App::baseUrl() ?>/_ikawa/inventory/createsupplier',
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+            url: '<?= App::baseUrl() ?>/_ikawa/settings/createrole',
+>>>>>>> itec/christian
             method: 'POST',
             contentType: 'application/json',
             dataType: 'json',
@@ -59,6 +90,10 @@ $(document).on('click', '#saveRoleBtn', function () {
         pageLength: 10
     });
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+=======
+>>>>>>> itec/christian
     // Function to load users from API and populate DataTable
     function loadData() {
         $.getJSON('<?= App::baseUrl() ?>/_ikawa/settings/roles', function (res) {
@@ -92,10 +127,14 @@ $(document).on('click', '#saveRoleBtn', function () {
 $(document).on('click', '.editrecord', function() {
     const btn = $(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> itec/christian
     // Fill modal fields
     $('#edit_role_name').val(btn.data('role_name'));
     $('#edit_description').val(btn.data('description'));
     $("#role_id").val( btn.data('id'));
+<<<<<<< HEAD
 =======
 
     // Fill modal fields
@@ -110,23 +149,91 @@ $(document).on('click', '.editrecord', function() {
     $('#edit_loc_id').val(btn.data('loc_id')).trigger('chosen:updated');
     $("#user_id").val( btn.data('id'));
 >>>>>>> itec/felix
+=======
+>>>>>>> itec/christian
     $('#myModalfour').modal('show');
 });
 
     // Handle edit User button
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(document).on('click', '#EditroleBtn', function (e) {
+========
+   
+    function loadData() {
+    $.getJSON('<?= App::baseUrl() ?>/_ikawa/inventory/getsuppliers', function (res) {
+       if (!res.success || !res.data) {
+            return;
+        }
+
+        TableData.clear();
+
+        $.each(res.data, function (index, record) {
+            
+            TableData.row.add([
+                index + 1,
+                record.full_name || '',
+                record.email || '',
+                record.phone || '',
+                `<div class="button-icon-btn button-icon-btn-rd">
+                    <button class="btn btn-default btn-icon-notika editrecord"
+                        title="Edit Supplier"
+                        data-id="${record.sup_id}"
+                        data-full_name="${record.full_name || ''}"
+                        data-email="${record.email || ''}"
+                        data-phone="${record.phone || ''}"
+                        data-address="${record.address || ''}">
+                        <i class="notika-icon notika-edit"></i>
+                    </button>
+                    <button class="btn btn-default btn-icon-notika deleterecord" 
+                        title="Delete Supplier" 
+                        data-id="${record.sup_id}" 
+                        data-full_name="${record.full_name || ''}">
+                        <i class="notika-icon text-danger notika-trash"></i>
+                    </button>
+                </div>`
+            ]);
+        });
+
+        TableData.draw(false);
+    })
+        }
+    });
+
+
+$(document).on('click', '.editrecord', function() {
+    const btn = $(this);
+    // Fill modal fields
+    $('#edit_full_name').val(btn.data('full_name'));
+    $('#edit_email').val(btn.data('email'));
+    $('#edit_phone').val(btn.data('phone'));
+    $("#edit_address").val( btn.data('address'));
+    $("#sup_id").val( btn.data('id'));
+    $('#myModalfour').modal('show');
+});
+
+   // Handle edit User button
+$(document).on('click', '#EditsupplierBtn', function (e) {
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+$(document).on('click', '#EditroleBtn', function (e) {
+>>>>>>> itec/christian
     e.preventDefault();
       e.preventDefault();
     const btn = this;
     setButtonLoading(btn, true);
           const payload = {
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+=======
+>>>>>>> itec/christian
             role_name: $('#edit_role_name').val().trim(),
             description: $('#edit_description').val().trim(),
             role_id:$('#role_id').val()
         };
 
         if (!payload.role_name) {
+<<<<<<< HEAD
 =======
 $(document).on('click', '#EditUserBtn', function (e) {
     e.preventDefault();
@@ -147,17 +254,39 @@ $(document).on('click', '#EditUserBtn', function (e) {
 
         if (!userData.username || !userData.role_id || !userData.loc_id) {
 >>>>>>> itec/felix
+========
+            full_name: $('#edit_full_name').val().trim(),
+            email: $('#edit_email').val().trim(),
+            phone: $('#edit_phone').val().trim(),
+            address: $('#edit_address').val().trim(),
+            sup_id:$('#sup_id').val()
+        };
+
+        if (!payload.phone || !payload.full_name) {
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+>>>>>>> itec/christian
             showToast('Please fill all required fields!', 'error');
             return;
         }
 
         $.ajax({
 <<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+<<<<<<< HEAD
             url: '<?= App::baseUrl() ?>/_ikawa/settings/updateroles',
+========
+            url: '<?= App::baseUrl() ?>/_ikawa/inventory/updatesupplier',
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+            url: '<?= App::baseUrl() ?>/_ikawa/settings/updateroles',
+>>>>>>> itec/christian
             method: 'PUT',
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(payload),
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
 =======
             url: '<?= App::baseUrl() ?>/_ikawa/users/update',
             method: 'PUT',
@@ -165,6 +294,10 @@ $(document).on('click', '#EditUserBtn', function (e) {
             dataType: 'json',
             data: JSON.stringify(userData),
 >>>>>>> itec/felix
+========
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+>>>>>>> itec/christian
             success: function (response) {
                 if (response.success) {
                     showToast(response.message, 'success');
@@ -173,10 +306,18 @@ $(document).on('click', '#EditUserBtn', function (e) {
                     $('#myModalfour input').val('');
                     $('#myModalfour select').val('').trigger('chosen:updated');
 <<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+<<<<<<< HEAD
                     loadData();
 =======
                     loadUsers();
 >>>>>>> itec/felix
+========
+                    loadData();
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+                    loadData();
+>>>>>>> itec/christian
                 } else {
                     showToast(response.message, 'error');
                 }
@@ -194,18 +335,34 @@ $(document).on('click', '#EditUserBtn', function (e) {
         });
 
 <<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+<<<<<<< HEAD
      // Initialize DataTable
     const TableData = $('#data-table-basic').DataTable({
 =======
     // Initialize DataTable
     const userTable = $('#data-table-basic').DataTable({
 >>>>>>> itec/felix
+========
+    
+    // Initialize DataTable
+    const TableData = $('#data-table-basic').DataTable({
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+     // Initialize DataTable
+    const TableData = $('#data-table-basic').DataTable({
+>>>>>>> itec/christian
         destroy: true,
         pageLength: 10
     });
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
     // Function to load users from API and populate DataTable
 <<<<<<< HEAD
+=======
+    // Function to load users from API and populate DataTable
+>>>>>>> itec/christian
     function loadData() {
         $.getJSON('<?= App::baseUrl() ?>/_ikawa/settings/roles', function (res) {
             if (!res.success) return;
@@ -225,6 +382,7 @@ $(document).on('click', '#EditUserBtn', function (e) {
                         data-description="${record.description}">
                         <i class="notika-icon notika-edit"></i>
                     </button>
+<<<<<<< HEAD
 =======
     function loadUsers() {
         $.getJSON('<?= App::baseUrl() ?>/_ikawa/users/get-all-users', function (res) {
@@ -260,23 +418,77 @@ $(document).on('click', '#EditUserBtn', function (e) {
                         <i class="notika-icon text-danger notika-trash"></i>
                     </button>
 >>>>>>> itec/felix
+=======
+>>>>>>> itec/christian
                 </div>`
             ]);
 });
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             TableData.draw(false);
         });
     }
+========
+   
+    function loadData() {
+    $.getJSON('<?= App::baseUrl() ?>/_ikawa/inventory/getsuppliers', function (res) {
+       if (!res.success || !res.data) {
+            return;
+        }
+
+        TableData.clear();
+
+        $.each(res.data, function (index, record) {
+            
+            TableData.row.add([
+                index + 1,
+                record.full_name || '',
+                record.email || '',
+                record.phone || '',
+                `<div class="button-icon-btn button-icon-btn-rd">
+                    <button class="btn btn-default btn-icon-notika editrecord"
+                        title="Edit Supplier"
+                        data-id="${record.sup_id}"
+                        data-full_name="${record.full_name || ''}"
+                        data-email="${record.email || ''}"
+                        data-phone="${record.phone || ''}"
+                        data-address="${record.address || ''}">
+                        <i class="notika-icon notika-edit"></i>
+                    </button>
+                    <button class="btn btn-default btn-icon-notika deleterecord" 
+                        title="Delete Supplier" 
+                        data-id="${record.sup_id}" 
+                        data-full_name="${record.full_name || ''}">
+                        <i class="notika-icon text-danger notika-trash"></i>
+                    </button>
+                </div>`
+            ]);
+        });
+
+        TableData.draw(false);
+    })
+        }
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+            TableData.draw(false);
+        });
+    }
+>>>>>>> itec/christian
 
  });
 
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
+=======
+>>>>>>> itec/christian
 
     
 });
 
+<<<<<<< HEAD
 =======
             userTable.draw(false);
         });
@@ -292,6 +504,16 @@ $(document).on('click', '.deleteuser', function() {
     swal({   
         title: "Are you sure?",   
         text: "You will delete " + user_name + "! This action cannot be undone.",   
+========
+ $(document).on('click', '.deleterecord', function() {
+    const btn = $(this);
+    const sup_id = btn.data('id');
+    const full_name = btn.data('full_name') || 'this supplier'; 
+    
+    swal({   
+        title: "Are you sure?",   
+        text: "You will delete " + full_name + "! This action cannot be undone.",   
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
         type: "warning",   
         showCancelButton: true,   
         confirmButtonText: "Yes, delete!",
@@ -303,13 +525,22 @@ $(document).on('click', '.deleteuser', function() {
             btn.html('<i class="notika-icon notika-loading"></i> Deleting...').prop('disabled', true);
             
             $.ajax({
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
                 url: '<?= App::baseUrl() ?>/_ikawa/users/delete/' + user_id,
+========
+                url: '<?= App::baseUrl() ?>/_ikawa/inventory/deletesupplier/' + sup_id,
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
                 method: 'DELETE',
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
                         swal("Deleted!", response.message || "User has been deleted successfully.", "success");
                         loadUsers();
+========
+                        swal("Deleted!", response.message || "Supplier has been deleted successfully.", "success");
+                        loadData();
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
                         
                     } else {
                         swal("Error!", response.message || "Failed to delete user.", "error");
@@ -328,12 +559,18 @@ $(document).on('click', '.deleteuser', function() {
                 }
             });
 
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
              // Initialize DataTable
     const userTable = $('#data-table-basic').DataTable({
+========
+ // Initialize DataTable
+    const TableData = $('#data-table-basic').DataTable({
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
         destroy: true,
         pageLength: 10
     });
 
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
     // Function to load users from API and populate DataTable
     function loadUsers() {
         $.getJSON('<?= App::baseUrl() ?>/_ikawa/users/get-all-users', function (res) {
@@ -366,22 +603,68 @@ $(document).on('click', '.deleteuser', function() {
                         <i class="notika-icon notika-edit"></i>
                     </button>
                     <button class="btn btn-default btn-icon-notika deleteuser" title="Delete User" data-id="${user.user_id}">
+========
+   
+    function loadData() {
+    $.getJSON('<?= App::baseUrl() ?>/_ikawa/inventory/getsuppliers', function (res) {
+       if (!res.success || !res.data) {
+            return;
+        }
+
+        TableData.clear();
+
+        $.each(res.data, function (index, record) {
+            
+            TableData.row.add([
+                index + 1,
+                record.full_name || '',
+                record.email || '',
+                record.phone || '',
+                `<div class="button-icon-btn button-icon-btn-rd">
+                    <button class="btn btn-default btn-icon-notika editrecord"
+                        title="Edit Supplier"
+                        data-id="${record.sup_id}"
+                        data-full_name="${record.full_name || ''}"
+                        data-email="${record.email || ''}"
+                        data-phone="${record.phone || ''}"
+                        data-address="${record.address || ''}">
+                        <i class="notika-icon notika-edit"></i>
+                    </button>
+                    <button class="btn btn-default btn-icon-notika deleterecord" 
+                        title="Delete Supplier" 
+                        data-id="${record.sup_id}" 
+                        data-full_name="${record.full_name || ''}">
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
                         <i class="notika-icon text-danger notika-trash"></i>
                     </button>
                 </div>`
             ]);
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
 });
 
 
             userTable.draw(false);
         });
     }
+========
+        });
+
+        TableData.draw(false);
+    })
+        }
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
 
         }
     });
 });
     
 });
+<<<<<<<< HEAD:operations/views/scripts/roles-scripts.php
 >>>>>>> itec/felix
+========
+
+>>>>>>>> itec/christian:operations/views/scripts/supplier-scripts.php
+=======
+>>>>>>> itec/christian
 </script>
 
