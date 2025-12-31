@@ -53,7 +53,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
@@ -68,8 +67,6 @@
                                      </div>
                                 </div>
                             </div>
-=======
->>>>>>> itec/christian
                         </div>
                  </div>
              <div class="modal-footer">
@@ -132,10 +129,7 @@
                                         <th>Full Name</th>
                                         <th>email</th>
                                         <th>Phone</th>
-<<<<<<< HEAD
                                         <th>Type</th>
-=======
->>>>>>> itec/christian
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -152,10 +146,7 @@
                                                 <td><?php echo $record['full_name']; ?></td>
                                                 <td><?php echo $record['email']; ?></td>
                                                 <td><?php echo $record['phone']; ?></td>
-<<<<<<< HEAD
                                                 <td><?php echo $record['type']; ?></td>
-=======
->>>>>>> itec/christian
                                                 <td>
                                                 <div class="button-icon-btn button-icon-btn-rd">
                                                 <button
@@ -165,12 +156,8 @@
                                                 data-full_name="<?= htmlspecialchars($record['full_name']) ?>"
                                                 data-email="<?= htmlspecialchars($record['email']) ?>"
                                                 data-phone="<?= htmlspecialchars($record['phone']) ?>"
-<<<<<<< HEAD
                                                 data-address="<?= htmlspecialchars($record['address']) ?>"
                                                 data-type="<?= htmlspecialchars($record['type']) ?>">
-=======
-                                                data-address="<?= htmlspecialchars($record['address']) ?>">
->>>>>>> itec/christian
                                                 <i class="notika-icon notika-edit"></i>
                                               </button>
                                               <button class="btn btn-default btn-icon-notika deleterecord"  title="Delete Supplier"
@@ -248,7 +235,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
 
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
@@ -263,8 +249,6 @@
                                      </div>
                                 </div>
                             </div>
-=======
->>>>>>> itec/christian
                         </div>
                     <div class="modal-footer">
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 RewriteEngine On
 RewriteBase /www.ikawa.rw/_ikawa/
 
@@ -8,12 +7,3 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ roots/index.php [QSA,L]
 
 
-=======
-RewriteEngine On
-RewriteBase /www.ikawa.rw/_ikawa/
-
-# If request is not a file or folder, redirect to index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ roots/index.php [QSA,L]
->>>>>>> itec/felix

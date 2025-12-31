@@ -62,13 +62,9 @@ class InventoryController
             'full_name' => $full_name,
             'email'  => $email,
             'phone'=>$phone,
-<<<<<<< HEAD
             'address'=>trim( $input[ 'address' ] ),
             'type'=>trim( $input[ 'type' ] )
 
-=======
-            'address'=>trim( $input[ 'address' ] )
->>>>>>> itec/christian
         ];
 
         if ( $this->inventoryModel->createSupp( $data ) ) {
@@ -138,10 +134,7 @@ class InventoryController
             'email'=> $email,
             'phone'=>$phone,
             'address'=>trim( $input[ 'address' ] ),
-<<<<<<< HEAD
             'type'=>trim( $input[ 'type' ] ),
-=======
->>>>>>> itec/christian
             'sup_id' =>$sup_id
         ];
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2025 at 03:59 PM
+-- Generation Time: Dec 29, 2025 at 04:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -65,13 +65,7 @@ INSERT INTO `access_logs` (`log_id`, `user_id`, `action`, `description`, `ip_add
 (21, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-29 14:53:02'),
 (22, 1, 'logout', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-29 15:54:44'),
 (23, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-29 15:54:52'),
-(24, 1, 'logout', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-29 15:56:57'),
-(25, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 06:32:11'),
-(26, 1, 'logout', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 08:38:14'),
-(27, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 08:46:19'),
-(28, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 09:18:23'),
-(29, 1, 'logout', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 11:23:14'),
-(30, 1, 'login', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 11:38:21');
+(24, 1, 'logout', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-29 15:56:57');
 
 -- --------------------------------------------------------
 
@@ -95,7 +89,8 @@ CREATE TABLE `tbl_company` (
 --
 
 INSERT INTO `tbl_company` (`cpy_id`, `cpy_full_name`, `cpy_short_name`, `phone`, `email`, `address`, `logo`, `reg_date`) VALUES
-(1, 'ITEC LTD', 'ITEC LTD', '0788620612', 'info@itec.rw', 'KN 1 Rd 4 P.O. Box 4179 KIGALI Rwanda', NULL, '2024-04-25 11:18:46');
+(1, 'ITEC LTD', 'ITEC LTD', '0788620612', 'info@itec.rw', 'KN 1 Rd 4 P.O. Box 4179 KIGALI Rwanda', NULL, '2024-04-25 11:18:46'),
+(2, 'sprimone', 'sprimone', '0785414807', 'lindairis2020@gmail.com', 'kn 43 st', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,7 +102,6 @@ CREATE TABLE `tbl_location` (
   `loc_id` int(11) NOT NULL,
   `location_name` varchar(50) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
-  `type` enum('HQ','Station') DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -115,11 +109,10 @@ CREATE TABLE `tbl_location` (
 -- Dumping data for table `tbl_location`
 --
 
-INSERT INTO `tbl_location` (`loc_id`, `location_name`, `description`, `type`, `status`) VALUES
-(1, 'Station A', 'Station A', 'Station', 1),
-(2, 'Station B', 'Station B', 'Station', 1),
-(3, 'HQ', 'Headquarter', 'HQ', 1),
-(5, 'Station C', 'Station C', 'Station', 1);
+INSERT INTO `tbl_location` (`loc_id`, `location_name`, `description`, `status`) VALUES
+(1, 'Station A', 'Station A', 1),
+(2, 'Station B', 'Station B', 1),
+(3, 'HQ', 'Headquarter', 1);
 
 -- --------------------------------------------------------
 
@@ -176,7 +169,6 @@ CREATE TABLE `tbl_suppliers` (
   `email` varchar(100) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `address` varchar(250) DEFAULT NULL,
-  `type` enum('Supplier','Farmer') DEFAULT 'Supplier',
   `status` enum('active','inactive') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -184,8 +176,8 @@ CREATE TABLE `tbl_suppliers` (
 -- Dumping data for table `tbl_suppliers`
 --
 
-INSERT INTO `tbl_suppliers` (`sup_id`, `full_name`, `email`, `phone`, `address`, `type`, `status`) VALUES
-(1, 'Jean Paul Habumugisha', 'habumugishajeanpaul@gmail.com', '0784481029', 'kn 43 st', 'Supplier', 'active');
+INSERT INTO `tbl_suppliers` (`sup_id`, `full_name`, `email`, `phone`, `address`, `status`) VALUES
+(1, 'Jean Paul Habumugisha', 'habumugishajeanpaul@gmail.com', '0784481029', 'kn 43 st', 'active');
 
 -- --------------------------------------------------------
 
@@ -235,7 +227,7 @@ CREATE TABLE `tbl_users` (
 INSERT INTO `tbl_users` (`user_id`, `first_name`, `last_name`, `role_id`, `loc_id`, `email`, `username`, `phone`, `gender`, `nid`, `password_hash`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Adrien', 'NISH', 1, 3, 'nishadrien@gmail.com', 'admin', '0784481029', 'Male', 12344, '$2y$10$z4Gd2yZySnNAfOhzfHzu1Os9wxXLukLLaeyYzO7U8nGpTXjJ5VbdW', 'active', '2025-12-19 14:38:07', '2025-12-23 09:07:48'),
 (5, 'ITEC', 'LTD', 10, 1, 'info@itec.rw', 'itec', '0788620612', 'No Gender', 12345678, '$2y$10$3HXKOv2ReUjmr8tAiGoHouoo4DMWlukepvE/gI24v3FxAsEH3yjSK', 'active', '2025-12-20 09:17:59', '2025-12-22 12:28:01'),
-(7, 'Adrien', 'Nishimirwe', 2, 2, 'adrien.nishimirwe@aims.ac.rw', 'anisimirwe', '0788123456', 'male', 2147483647, '$2y$10$GCZXSRyXPWjWsSRBBvbGXeSPJf36NchIJXixnQoEuDKHYoix4Cwfu', 'active', '2025-12-22 10:15:52', '2025-12-30 10:36:14');
+(7, 'Adrien', 'Nishimirwe', 2, 2, 'adrien.nishimirwe@aims.ac.rw', 'anisimirwe', '0788123456', 'female', 2147483647, '$2y$10$GCZXSRyXPWjWsSRBBvbGXeSPJf36NchIJXixnQoEuDKHYoix4Cwfu', 'active', '2025-12-22 10:15:52', '2025-12-29 13:11:00');
 
 -- --------------------------------------------------------
 
@@ -259,7 +251,7 @@ CREATE TABLE `user_sessions` (
 --
 
 INSERT INTO `user_sessions` (`session_id`, `user_id`, `session_key`, `ip_address`, `user_agent`, `started_at`, `ended_at`, `is_active`) VALUES
-(3, 1, '6433cecfbcacb836df5fa42b4021ed83e5c986bef2423bc2d7850c227344df82', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', '2025-12-30 13:38:21', '2025-12-30 17:41:32', 1);
+(3, 1, '63ec9ca275da807d947833857a17938591eb9265f61d00e7641e0b3b09b0811d', '::1', 'Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 CrKey/1.54.250320', '2025-12-23 13:18:21', '2025-12-23 15:18:15', 1);
 
 --
 -- Indexes for dumped tables
@@ -330,7 +322,7 @@ ALTER TABLE `user_sessions`
 -- AUTO_INCREMENT for table `access_logs`
 --
 ALTER TABLE `access_logs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_company`
@@ -342,7 +334,7 @@ ALTER TABLE `tbl_company`
 -- AUTO_INCREMENT for table `tbl_location`
 --
 ALTER TABLE `tbl_location`
-  MODIFY `loc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `loc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_roles`
@@ -360,7 +352,7 @@ ALTER TABLE `tbl_station`
 -- AUTO_INCREMENT for table `tbl_suppliers`
 --
 ALTER TABLE `tbl_suppliers`
-  MODIFY `sup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_units`
@@ -378,7 +370,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

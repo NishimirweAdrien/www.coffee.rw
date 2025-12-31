@@ -49,22 +49,14 @@ class Inventory
                     full_name,
                     email,
                     phone,
-<<<<<<< HEAD
                     address,
                     type
-=======
-                    address
->>>>>>> itec/christian
                 ) VALUES (
                     :full_name,
                     :email,
                     :phone,
-<<<<<<< HEAD
                     :address,
                     :type
-=======
-                    :address
->>>>>>> itec/christian
                 )
             ";
 
@@ -75,10 +67,7 @@ class Inventory
                 ':email'  => $data[ 'email' ],
                 ':phone'  => $data[ 'phone' ],
                 ':address'  => $data[ 'address' ],
-<<<<<<< HEAD
                 ':type'=>$data[ 'type' ]
-=======
->>>>>>> itec/christian
 
             ] );
         } catch ( PDOException $e ) {
@@ -127,12 +116,8 @@ class Inventory
     public function updateSuppl( array $data ): bool {
 
         try {
-<<<<<<< HEAD
             $sql = "UPDATE tbl_suppliers SET full_name=:full_name,email=:email,phone=:phone,address=:address,
             type=:type
-=======
-            $sql = "UPDATE tbl_suppliers SET full_name=:full_name,email=:email,phone=:phone,address=:address
->>>>>>> itec/christian
             where sup_id=:sup_id";
 
             $stmt = $this->conn->prepare( $sql );
@@ -142,10 +127,7 @@ class Inventory
                 ':email'  => $data[ 'email' ],
                 ':phone'  => $data[ 'phone' ],
                 ':address'  => $data[ 'address' ],
-<<<<<<< HEAD
                 ':type'  => $data[ 'type' ],
-=======
->>>>>>> itec/christian
                 ':sup_id'   => $data[ 'sup_id' ]
             ] );
         } catch ( PDOException $e ) {

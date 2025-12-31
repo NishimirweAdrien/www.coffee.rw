@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 class App {
@@ -17,16 +16,3 @@ class App {
 // $apiUrl = App::baseUrl() . '/settings/roles';
 // $json = file_get_contents( $apiUrl );
 // ?>
-=======
-<?php
-
-class App {
-    public static function baseUrl() {
-        $protocol = ( !empty( $_SERVER[ 'HTTPS' ] ) && $_SERVER[ 'HTTPS' ] !== 'off'
-        || $_SERVER[ 'SERVER_PORT' ] == 443 ) ? 'https' : 'http';
-        $host = $_SERVER[ 'HTTP_HOST' ];
-        $folder = '/www.ikawa.rw';
-        return $protocol . '://' . $host . $folder;
-    }
-}
->>>>>>> itec/felix
